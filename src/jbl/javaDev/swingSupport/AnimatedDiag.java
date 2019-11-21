@@ -38,6 +38,7 @@ public class AnimatedDiag extends JDialog{
     
     public AnimatedDiag(Point finalPoint){
         
+        this.setUndecorated(true);
         this.finalPoint=finalPoint;
         
     }
