@@ -5,7 +5,7 @@
  *  Jonathan B. Lazar
  *  jonathanlazar17@gmail.com
  *  Started: August 07 2018
- *  Updated: June 22 2019
+ *  Updated: December 9 2019
  *  
  *
  * Copyright (c) 2018 [Jonathan B. Lazar]
@@ -145,6 +145,18 @@ public class AnimatedDiag extends JDialog{
         
         AnimatedDiag.super.setSize(AnimatedDiag.this.gWidth,AnimatedDiag.this.gHeight);
         this.revalidate();
+        
+    }
+    
+    public void setFinalPoint(Point finalPoint){
+        
+        this.finalPoint=finalPoint;
+        
+    }
+    
+    public Point getFinalPoint(){
+        
+        return this.finalPoint;
         
     }
     
