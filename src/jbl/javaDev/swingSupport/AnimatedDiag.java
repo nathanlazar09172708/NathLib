@@ -1,3 +1,11 @@
+package jbl.javaDev.swingSupport;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.image.BufferedImage;
+
+
 /********************************************************************
  *  AnimatedDiag.java 
  *  A dialog with animation capabilities
@@ -9,22 +17,7 @@
  *  
  *
  * Copyright (c) 2018 [Jonathan B. Lazar]
- *
  *******************************************************************/
-
-package jbl.javaDev.swingSupport;
-
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.image.BufferedImage;
-
-
-/**
- *
- * @author Nathan
- */
 public class AnimatedDiag extends JDialog{
     
     private Point finalPoint;
@@ -33,9 +26,13 @@ public class AnimatedDiag extends JDialog{
     private boolean isAnimationRunning=false;
     private BufferedImage img;
     private Container container;
-    
     private int gWidth=0,gHeight=0;
     
+    /**
+     *  Constructor AnimatedDiag to set Dialog as undecorated and set the finalPoint
+     *  @param finalPoint The final point in which slide effect ends
+     *  @see SlideActionListener
+     */
     public AnimatedDiag(Point finalPoint){
         
         this.setUndecorated(true);
@@ -43,6 +40,9 @@ public class AnimatedDiag extends JDialog{
         
     }
     
+    /**
+     * The activate method to run the animations
+     */
     public void activate(){
        
         if(!isAnimationRunning()){
@@ -98,6 +98,12 @@ public class AnimatedDiag extends JDialog{
         
     }
     
+    /**
+     *  Override setSize method
+     *  @param width to set the final width of this dialog
+     *  @param height to set the final height of this dialog
+    */
+    
     @Override
     public void setSize(int width,int height){
         
@@ -128,6 +134,10 @@ public class AnimatedDiag extends JDialog{
         
     }
     
+    
+    /**
+     * The imageDraw method to take the image of a dialog during grow and shrink animation
+     */
     public void imageDraw(){
     
         this.remove(this.getContentPane());
@@ -148,12 +158,20 @@ public class AnimatedDiag extends JDialog{
         
     }
     
+    /**
+     * The method setFinalPoint to set final point or destination of sliding dialog
+     * @param finalPoint 
+     */
     public void setFinalPoint(Point finalPoint){
         
         this.finalPoint=finalPoint;
         
     }
     
+    /**
+     * The method getFinalPoint to get the final point or destination of sliding dialog
+     * @return Point 
+     */
     public Point getFinalPoint(){
         
         return this.finalPoint;
