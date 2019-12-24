@@ -5,6 +5,8 @@
  */
 package jbl.javaDev.util;
 
+import java.util.Random;
+
 /********************************************************************
  *  RandomizedCharacters.java
  *  A tool to generate randomized characters
@@ -17,15 +19,16 @@ package jbl.javaDev.util;
  * Copyright (c) 2018 [Jonathan B. Lazar]
  *
  *******************************************************************/
-
-import java.util.Random;
-
 public class RandomizedCharacters {
     
     private int length;
     private String randomizedCharacters="";
     private String characters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     
+    /**
+     * RandomizedCharacter Constructor to start randomize characters with given length
+     * @param length given length
+     */
     public RandomizedCharacters(int length){
         this.length=length;
         this.randomized();
@@ -38,6 +41,10 @@ public class RandomizedCharacters {
         }
     }
     
+    /**
+     * The getRandomizedCharacters method to return randomized characters in string format
+     * @return String randomized characters in string format
+     */
     public String getRandomizedCharacters(){
         return this.randomizedCharacters;
     }
