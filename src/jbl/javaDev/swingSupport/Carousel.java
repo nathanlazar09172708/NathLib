@@ -1,3 +1,9 @@
+package jbl.javaDev.swingSupport;
+
+import javax.swing.*;
+import java.util.*;
+import java.awt.event.*;
+
 /********************************************************************
  *  Carousel.java 
  *  A container that holds sliders
@@ -11,17 +17,6 @@
  * Copyright (c) 2016 [Jonathan B. Lazar]
  *
  *******************************************************************/
-
-
-
-
-package jbl.javaDev.swingSupport;
-
-import javax.swing.*;
-import java.util.*;
-import java.awt.event.*;
-
-
 public class Carousel extends JPanel{
 	
     private ArrayList<CarouselItems> carouselItems=new ArrayList<CarouselItems>();
@@ -31,14 +26,24 @@ public class Carousel extends JPanel{
     private javax.swing.Timer slidingEffectTimer;
     private SlidingEffectListenerHandler listenerHandler;
     private boolean isAnimationRunning=false;
-	
+    
+    
+    /**
+     * Carousel constructor automatic sets Carousel into null layout and non opaque
+     */
     public Carousel(){
             
         this.setLayout(null);
         this.setOpaque(false);
 	
     }
-	
+    
+    /**
+     * The add method to add panels to Carousel with method call add from parent
+     * @see add
+     * @param clickableEntities to bind with panel
+     * @param panel to bind with clickableEntities
+     */
     public void add(JComponent clickableEntities,JPanel panel){
 	
         // Do not use instance count as parameter inside MouseListener, pass the value through local variable
@@ -104,14 +109,22 @@ public class Carousel extends JPanel{
         }
 	
     }
-	
+    
+    /**
+     * Override setOpaque method to force Carousel as non opaque as always
+     * @param val not used
+     */
     @Override
     public void setOpaque(boolean val){
 	
         super.setOpaque(false);
 	
     }
-	
+    
+    /**
+     * The isRunning method to get if the Carousel animation still running
+     * @return boolean 
+     */
     public boolean isRunning(){
 		
         return isAnimationRunning;
