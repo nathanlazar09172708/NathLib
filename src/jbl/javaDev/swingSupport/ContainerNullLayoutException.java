@@ -1,3 +1,5 @@
+package jbl.javaDev.swingSupport;
+
 /********************************************************************
  *  ContainerNullLayoutException.java 
  *  Exception for null layouts
@@ -9,12 +11,6 @@
  *  Copyright (c) 2016 [Jonathan B. Lazar]
  *
  *******************************************************************/
-
-
-
-package jbl.javaDev.swingSupport;
-
-
 public class ContainerNullLayoutException extends Exception{
 	
 	public ContainerNullLayoutException(String message){
