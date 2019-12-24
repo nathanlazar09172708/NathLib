@@ -1,3 +1,8 @@
+package jbl.javaDev.swingSupport;
+
+import javax.swing.*;
+import java.awt.event.*;
+
 /********************************************************************
  *  MenuHover.java 
  *  A hoverable label to show menu dialog
@@ -12,20 +17,14 @@
  *
  *
  *******************************************************************/
-
-
-
-
-package jbl.javaDev.swingSupport;
-
-
-import javax.swing.*;
-import java.awt.event.*;
-
 public class MenuHover extends JLabel{
 	
     private MenuDialog diag;
 	
+    /**
+     * MenuHover Constructor to register mouseListeners
+     * @param string default param
+     */
     public MenuHover(String string){
         
         super(string);
@@ -85,6 +84,10 @@ public class MenuHover extends JLabel{
     
     }
 	
+    /**
+     * The setMenuDialog to bind dialog in menuHover
+     * @param diag to bind with menuHover
+     */
     public void setMenuDialog(MenuDialog diag){
         
         this.diag=diag;
@@ -92,8 +95,6 @@ public class MenuHover extends JLabel{
     
     }
         
-        
-	
     private void fireDialogAppearance(){
         
         if(this.diag.getDialogAppearance()==MenuDialog.DIALOG_APPEARANCE_RIGHT_SIDE){
