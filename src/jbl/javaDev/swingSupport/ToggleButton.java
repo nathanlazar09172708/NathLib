@@ -1,3 +1,9 @@
+package jbl.javaDev.swingSupport;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
 /********************************************************************
  *  ToggleButton.java 
  *  ToggleButton that shows and hides component
@@ -13,16 +19,6 @@
  *
  *
  *******************************************************************/
-package jbl.javaDev.swingSupport;
-
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-
-/**
- *
- * @author nathan
- */
 public class ToggleButton{
     
     private Timer slideAwayEffectTimer,slideShowEffectTimer;
@@ -34,10 +30,14 @@ public class ToggleButton{
     private Rectangle windowSize=GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
     
     private boolean animationRunning=false;
-    
     private ImageIcon hideIcon,showIcon;
     
-    
+    /**
+     *  ToggleButton Constructor to show and hide the window with animation
+     *  @param window to bind with toggle button    
+     *  @param width the width of the toggle button
+     *  @param height the height of the toggle button
+     */
     public ToggleButton(JFrame window,int width,int height){
         
         this.window=window;
@@ -63,7 +63,7 @@ public class ToggleButton{
             tail.addMouseListener(new TailListenerHandler());
             
         }
-        catch(ToggleButtonException e){
+        catch(UndecoratedWindowException e){
             
             e.printStackTrace();
             
@@ -73,6 +73,11 @@ public class ToggleButton{
     }
     
     
+    /**
+     * The setToggleButton method to bind with window
+     * @param hideIcon put hide image in toggle button
+     * @param showIcon put show image in toggle button
+     */
     public void setToggleIcon(ImageIcon hideIcon,ImageIcon showIcon){
         
         this.hideIcon=hideIcon;
@@ -98,7 +103,6 @@ public class ToggleButton{
         
     }
     
-    
     private void toggle(){
         
         if(this.window.getLocationOnScreen().x!=this.screenSize.width){
@@ -120,12 +124,11 @@ public class ToggleButton{
 
     }
     
-    
-    private void checkToggleButtonException()throws ToggleButtonException{
+    private void checkToggleButtonException()throws UndecoratedWindowException{
         
         if(!this.window.isUndecorated()){
             
-            throw new ToggleButtonException("Frame must be undecorated");
+            throw new UndecoratedWindowException("Frame must be undecorated");
             
         }
         
@@ -230,17 +233,6 @@ public class ToggleButton{
             
             }
             
-        }
-        
-    }
-    
-    
-    private class ToggleButtonException extends Exception{
-        
-        public ToggleButtonException(String message){
-            
-            super(message);
-        
         }
         
     }
