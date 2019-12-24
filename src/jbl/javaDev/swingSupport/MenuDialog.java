@@ -1,3 +1,9 @@
+package jbl.javaDev.swingSupport;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
 /********************************************************************
  *  MenuDialog.java 
  *  A dialog width animation abilities
@@ -12,15 +18,6 @@
  *
  *
  *******************************************************************/
-
-
-package jbl.javaDev.swingSupport;
-
-
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-
 public class MenuDialog extends JDialog{
 	
     private int x,y;
@@ -36,8 +33,14 @@ public class MenuDialog extends JDialog{
     private boolean isAnimationRunning=false;
     private MenuHover menuHover;
        
-		
-		
+
+    /**
+     *  MenuDialog constructor 
+     *  -set dialog as undecorated and opacity to transparent
+     *  -added Global MouseListener within all components in Event Dispatched Thread due to following circumstances
+     *  *   when mouse is exited in dialog it doesn't dissappear because of the component above the dialog which is
+     *  *   completely covered by the component 
+     */
     public MenuDialog(){
         
         this.setUndecorated(true);
@@ -107,31 +110,50 @@ public class MenuDialog extends JDialog{
     
     }
 	
-        
+    /**
+     * The regMenuHover method to bind menuHover to dialog
+     * @param menuHover binds with dialog
+     */
     protected void regMenuHover(MenuHover menuHover){
         
         this.menuHover=menuHover;
     
     }
     
+    /**
+     * The isAnimationRunning method to check if animation still runs
+     * @return boolean
+     */
     protected boolean isAnimationRunning(){
     
         return this.isAnimationRunning;
     
     }
         
+    /**
+     * The setAnimationRunning method to set if animation is running
+     * @param isAnimationRunning 
+     */
     protected void setAnimationRunning(boolean isAnimationRunning){
     
         this.isAnimationRunning=isAnimationRunning;
     
     }
-        
+      
+    /**
+     * The setDialogAppearance method to set dialog appearances
+     * @param value constant value
+     */
     public void setDialogAppearance(int value){
 
         this.dialogAppearance=value;
     
     }
 	
+    /**
+     * The getDialogAppearance method to get the appearance of the dialog
+     * @return int constant value
+     */
     public int getDialogAppearance(){
 
         return this.dialogAppearance;
@@ -158,6 +180,11 @@ public class MenuDialog extends JDialog{
     
     }
         
+    /**
+     * The animate method to animate the dialog according to it's appearance
+     * @param x initial x location
+     * @param y initial y location
+     */
     protected void animate(int x,int y){
         
         this.setLocation(x,y);
