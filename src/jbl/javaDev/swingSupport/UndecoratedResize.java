@@ -23,12 +23,30 @@ public class UndecoratedResize {
     private java.awt.Window window;
     private java.awt.Cursor cursor;
     
+    /**
+     * UndecoratedResize constructor to check if window is 
+     * @param window 
+     */
     public UndecoratedResize(javax.swing.JFrame window){
         
-        if(window.isUndecorated()){
+        try{
             
-            this.window=window;
-            this.windowResize();
+            if(!window.isUndecorated()){
+                
+                throw new UndecoratedWindowException("Window must be undecorated");
+                
+            }
+            else{
+                
+                this.window=window;
+                this.windowResize();
+                
+            }
+            
+        }
+        catch(UndecoratedWindowException e){
+            
+            e.printStackTrace();
             
         }
         
@@ -36,10 +54,24 @@ public class UndecoratedResize {
     
     public UndecoratedResize(javax.swing.JDialog window){
         
-        if(window.isUndecorated()){
+        try{
             
-            this.window=window;
-            this.windowResize();
+            if(!window.isUndecorated()){
+                
+                throw new UndecoratedWindowException("Window must be undecorated");
+                
+            }
+            else{
+                
+                this.window=window;
+                this.windowResize();
+                
+            }
+            
+        }
+        catch(UndecoratedWindowException e){
+            
+            e.printStackTrace();
             
         }
         
