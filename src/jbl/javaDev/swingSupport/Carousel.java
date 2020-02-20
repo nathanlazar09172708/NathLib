@@ -11,7 +11,7 @@ import java.awt.event.*;
  *  Jonathan B. Lazar
  *  jonathanlazar17@gmail.com
  *  Started: December 12 2016
- *  Updated: June 22 2019
+ *  Updated: February 20 2020
  *  
  *
  * Copyright (c) 2016 [Jonathan B. Lazar]
@@ -48,8 +48,8 @@ public class Carousel extends JPanel{
 	
         // Do not use instance count as parameter inside MouseListener, pass the value through local variable
 	int localCount=count;
-	panel.setBounds(xBounds,0,this.getBounds().width,this.getBounds().height);
-	xBounds+=this.getBounds().width;
+	panel.setBounds(xBounds,0,this.getPreferredSize().width,this.getPreferredSize().height);
+	xBounds+=this.getPreferredSize().width;
 	carouselItems.add(new CarouselItems(clickableEntities,panel));
                 
 	clickableEntities.addMouseListener(
