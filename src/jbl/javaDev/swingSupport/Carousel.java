@@ -11,7 +11,7 @@ import java.awt.event.*;
  *  Jonathan B. Lazar
  *  jonathanlazar17@gmail.com
  *  Started: December 12 2016
- *  Updated: February 20 2020
+ *  Updated: February 29 2020
  *  
  *
  * Copyright (c) 2016 [Jonathan B. Lazar]
@@ -163,10 +163,10 @@ public class Carousel extends JPanel{
                             
                     }
                             
-                    else if(((int)((Carousel.this.getWidth()-(Carousel.this.getWidth()-carouselItems.get(c).panel.getBounds().x))*(0.20)))!=0){
+                    else if(((int)((Carousel.this.getWidth()-(Carousel.this.getWidth()-carouselItems.get(c).panel.getBounds().x))*(0.30)))!=0){
                             
                         this.rateChange=((int)((Carousel.this.getWidth()
-                        -(Carousel.this.getWidth()-carouselItems.get(c).panel.getBounds().x))*(0.20)));
+                        -(Carousel.this.getWidth()-carouselItems.get(c).panel.getBounds().x))*(0.30)));
                                 
                         for(int i=0;i<carouselItems.size();i++){
                                 
@@ -187,10 +187,15 @@ public class Carousel extends JPanel{
                             ,carouselItems.get(i).panel.getBounds().y);
                                     
                         }
-                                
-                        isAnimationRunning=false;
-                        this.rateChange=(int)Carousel.this.getWidth()/2;
-                        slidingEffectTimer.stop();
+                        
+                        if(carouselItems.get(c).panel.getBounds().x==0){
+                            
+                            isAnimationRunning=false;
+                            this.rateChange=(int)Carousel.this.getWidth()/2;
+                            slidingEffectTimer.stop();
+                            
+                        }       
+                        
                             
                     }
                             
@@ -211,10 +216,10 @@ public class Carousel extends JPanel{
                             
                     }
                             
-                    else if(((int)((Carousel.this.getWidth()-(carouselItems.get(c).panel.getBounds().x+Carousel.this.getWidth()))*(0.20)))!=0){
+                    else if(((int)((Carousel.this.getWidth()-(carouselItems.get(c).panel.getBounds().x+Carousel.this.getWidth()))*(0.30)))!=0){
                             
                         this.rateChange=((int)((Carousel.this.getWidth()
-                        -(carouselItems.get(c).panel.getBounds().x+Carousel.this.getWidth()))*(0.20)));
+                        -(carouselItems.get(c).panel.getBounds().x+Carousel.this.getWidth()))*(0.30)));
                                 
                         for(int i=carouselItems.size()-1;i>=0;i--){
                                 
@@ -235,10 +240,14 @@ public class Carousel extends JPanel{
                             +this.rateChange,carouselItems.get(i).panel.getBounds().y);
                                 
                         }
-                                
-                        isAnimationRunning=false;
-                        this.rateChange=(int)Carousel.this.getWidth()/2;
-                        slidingEffectTimer.stop();
+                        
+                        if(carouselItems.get(c).panel.getBounds().x==0){
+                            
+                            isAnimationRunning=false;
+                            this.rateChange=(int)Carousel.this.getWidth()/2;
+                            slidingEffectTimer.stop();
+                            
+                        }     
                             
                     }
                             
