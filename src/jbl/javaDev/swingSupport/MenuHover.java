@@ -20,7 +20,7 @@ import java.awt.event.*;
 public class MenuHover extends JLabel{
 	
     private MenuDialog diag;
-	
+	  
     /**
      * MenuHover Constructor to register mouseListeners
      * @param string default param
@@ -28,19 +28,27 @@ public class MenuHover extends JLabel{
     public MenuHover(String string){
         
         super(string);
+        this.addMouseMotionListener(
+                
+                new MouseMotionAdapter(){
+                    
+                    @Override
+                    public void mouseMoved(MouseEvent e){
+                        
+                        if(!MenuHover.this.diag.isAnimationRunning()&&!MenuHover.this.diag.isVisible()){
+                            
+                            fireDialogAppearance();
+                        
+                        }
+                    }
+                    
+                }
+                
+        );
         this.addMouseListener(
                 
             new MouseAdapter(){
                 
-                public void mouseEntered(MouseEvent e){
-                    
-                    if(!MenuHover.this.diag.isAnimationRunning()){
-                        
-                        fireDialogAppearance();
-                    
-                    }
-                
-                }
                 public void mouseExited(MouseEvent e){
                     
                     //must be relative to the bounds of Label Menu
@@ -50,7 +58,7 @@ public class MenuHover extends JLabel{
                             
                             if(!(e.getX()>0&&e.getY()>0&&e.getY()<MenuHover.this.getBounds().height)){
                                 
-                                MenuHover.this.diag.setVisible(false);
+                                MenuHover.this.diag.animateExit();
                             
                             }
                         
@@ -58,9 +66,9 @@ public class MenuHover extends JLabel{
                         if(MenuHover.this.diag.getDialogAppearance()==MenuDialog.DIALOG_APPEARANCE_LEFT_SIDE){
                             
                             if(!(e.getX()<0&&e.getY()>0&&e.getY()<MenuHover.this.getBounds().height)){
-                            
-                                MenuHover.this.diag.setVisible(false);
-                            
+                                
+                                MenuHover.this.diag.animateExit();
+                                
                             }
                         
                         }
@@ -68,13 +76,13 @@ public class MenuHover extends JLabel{
                             
                             if(!(e.getX()<MenuHover.this.getBounds().width&&e.getX()>0&&e.getY()>0)){
                                 
-                                MenuHover.this.diag.setVisible(false);
+                                MenuHover.this.diag.animateExit();
                             
                             }
                         
                         }
                     
-                    }	
+                    }
                 
                 }
             
@@ -91,7 +99,6 @@ public class MenuHover extends JLabel{
     public void setMenuDialog(MenuDialog diag){
         
         this.diag=diag;
-        this.diag.regMenuHover(this);
     
     }
         
@@ -119,13 +126,13 @@ public class MenuHover extends JLabel{
     
     private void dialogAppearanceLeftSide(){
         
-        this.diag.animate(this.getLocationOnScreen().x-this.diag.getWidth(),this.getLocationOnScreen().y);
+        this.diag.animate(this.getLocationOnScreen().x-this.diag.getWidth(),this.getLocationOnScreen().y,this);
         
     }
     
     private void dialogAppearanceRightSide(){
         
-        this.diag.animate(this.getLocationOnScreen().x+this.getWidth()+5,this.getLocationOnScreen().y);
+        this.diag.animate(this.getLocationOnScreen().x+this.getWidth()+5,this.getLocationOnScreen().y,this);
         
     }
 	
@@ -133,13 +140,13 @@ public class MenuHover extends JLabel{
         
         if(this.diag.getDialogAppearance()==MenuDialog.DIALOG_APPEARANCE_DOWN_SIDE_LEFT_ALIGN){
         
-            this.diag.animate(this.getLocationOnScreen().x-this.getWidth(),this.getLocationOnScreen().y+this.getHeight()+5);
+            this.diag.animate(this.getLocationOnScreen().x-this.getWidth(),this.getLocationOnScreen().y+this.getHeight()+5,this);
         
         }
         
         else if(this.diag.getDialogAppearance()==MenuDialog.DIALOG_APPEARANCE_DOWN_SIDE_RIGHT_ALIGN){
         
-            this.diag.animate(this.getLocationOnScreen().x-this.diag.getWidth()+(this.getWidth()*2),this.getLocationOnScreen().y+this.getHeight()+5);
+            this.diag.animate(this.getLocationOnScreen().x-this.diag.getWidth()+(this.getWidth()*2),this.getLocationOnScreen().y+this.getHeight()+5,this);
         
         }
     
